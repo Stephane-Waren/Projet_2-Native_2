@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRecent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/onglet_recents"
-        android:gravity="center"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

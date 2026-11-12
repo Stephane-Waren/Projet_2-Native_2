@@ -21,7 +21,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginStart="12dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/nomVideo"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="16sp"
+            android:textSize="16sp"  
             android:textStyle="bold"
             tools:text="nom.mp4" />
 

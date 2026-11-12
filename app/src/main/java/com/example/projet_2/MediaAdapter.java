@@ -11,29 +11,54 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.VideoViewHolder> {
+public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Media> listeMedias;
+    private static final int TYPE_VIDEO = 0;
+    private static final int TYPE_AUDIO = 1;
+
 
     public MediaAdapter(List<Media> listeMedias) {
         this.listeMedias = listeMedias;
     }
 
+
     @NonNull
     @Override
-    public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == TYPE_VIDEO) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_video, parent, false);
+            return new VideoViewHolder(view);
+        } else {
+            View view2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_audio, parent, false);
+            return new AudioViewHolder(view2);
+        }
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_video, parent, false);
-
-        return new VideoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Media media = listeMedias.get(position);
-        holder.nomVideo.setText(media.getNom());
-        holder.dureeVideo.setText(String.valueOf(media.getDuree()));
+        if (media instanceof Audio) {
+            AudioViewHolder holder1 = (AudioViewHolder) holder;
+            holder1.titreAudio.setText(((Audio) media).getTitre());
+            holder1.nomArtiste.setText(((Audio) media).getNomArtiste());
+        } else {
+            VideoViewHolder holder2 = (VideoViewHolder) holder;
+            holder2.nomVideo.setText(media.getNom());
+            holder2.dureeVideo.setText(String.valueOf(media.getDuree()));
+        }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        Media media = listeMedias.get(position);
+        if (media instanceof Audio) {
+            return TYPE_AUDIO;
+        }
+        return TYPE_VIDEO;
+    }
+
 
     @Override
     public int getItemCount() {
@@ -52,4 +77,19 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.VideoViewHol
             dureeVideo = itemView.findViewById(R.id.dureeVideo);
         }
     }
+
+    public static class AudioViewHolder extends RecyclerView.ViewHolder {
+        ImageView icone;
+        TextView titreAudio;
+        TextView nomArtiste;
+
+        public AudioViewHolder(@NonNull View itemView) {
+            super(itemView);
+            icone = itemView.findViewById(R.id.iconeAudio);
+            titreAudio = itemView.findViewById(R.id.titreAudio);
+            nomArtiste = itemView.findViewById(R.id.nomArtiste);
+
+        }
+    }
+
 }
