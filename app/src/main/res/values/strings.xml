@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Projet_2</string>
+    <string name="onglet_recents">Onglet Recents</string>
+    <string name="onglet_audio">Onglet Audio</string>
+    <string name="onglet_video">Onglet Video</string>
 </resources>
