@@ -13,9 +13,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
-    private ViewPager2 viewPager2;
-    private TabLayout tabLayout;
-    private TabLayoutMediator mediateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        tabLayout = findViewById(R.id.zone_onglets);
-        viewPager2 = findViewById(R.id.details_onglet);
+        TabLayout tabLayout = findViewById(R.id.zone_onglets);
+        ViewPager2 viewPager2 = findViewById(R.id.details_onglet);
         VPAdapter vpAdapter = new VPAdapter(this);
         viewPager2.setAdapter(vpAdapter);
-        mediateur = new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+        TabLayoutMediator mediateur = new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             tab.setText(vpAdapter.getTitre(position));
         });
         mediateur.attach();

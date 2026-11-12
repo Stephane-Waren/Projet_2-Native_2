@@ -3,4 +3,5 @@
     <string name="onglet_recents">Onglet Recents</string>
     <string name="onglet_audio">Onglet Audio</string>
     <string name="onglet_video">Onglet Video</string>
+    <string name="miniature">Miniature</string>
 </resources>

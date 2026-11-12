@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/onglet_video"
-        android:gravity="center"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="8dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
