@@ -1,5 +1,7 @@
 package com.example.projet_2;
 
+import android.content.ContentResolver;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Size;
+
+import java.io.IOException;
 import java.util.List;
 
 public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -47,6 +52,16 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             VideoViewHolder holder2 = (VideoViewHolder) holder;
             holder2.nomVideo.setText(media.getNom());
             holder2.dureeVideo.setText(String.valueOf(media.getDuree()));
+            holder2.image.setImageResource(R.drawable.ic_launcher_foreground);
+
+            try {
+                ContentResolver guichet = holder.itemView.getContext().getContentResolver();
+                Bitmap miniature = guichet.loadThumbnail(media.getUri(), new Size(320, 180), null);
+                holder2.image.setImageBitmap(miniature);
+
+            } catch (IOException e) {
+
+            }
         }
     }
 
