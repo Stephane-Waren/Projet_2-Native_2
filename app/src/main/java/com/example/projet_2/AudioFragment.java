@@ -30,19 +30,11 @@ public class AudioFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerAudio = view.findViewById(R.id.recyclerAudio);
-        ArrayList<Media> listeAudio = new ArrayList<>();
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
-        listeAudio.add(new Audio("Audio1", 20000L, Uri.EMPTY, "Ninho", "Filon"));
+        ChargeurMedias chargeurMedias = new ChargeurMedias(requireContext());
+        ArrayList<Media> listeAudio = chargeurMedias.chargerAudios();
 
         MediaAdapter adapterAudio = new MediaAdapter(listeAudio);
-        recyclerAudio.setLayoutManager( new LinearLayoutManager(requireContext()));
+        recyclerAudio.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerAudio.setAdapter(adapterAudio);
     }
 }
