@@ -31,28 +31,8 @@ public class VideoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerVideo = view.findViewById(R.id.recyclerVideo);
 
-        ArrayList<Media> listeVideos = new ArrayList<>();
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Supermanvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv", 25000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-        listeVideos.add(new Video("Batman vs Superman", 22000L, Uri.EMPTY));
-
+        ChargeurMedias chargeurVideo = new ChargeurMedias(requireContext());
+        ArrayList<Media> listeVideos = chargeurVideo.chargerVideos();
 
         MediaAdapter mediaAdapter = new MediaAdapter(listeVideos);
         recyclerVideo.setLayoutManager( new LinearLayoutManager(requireContext()));
