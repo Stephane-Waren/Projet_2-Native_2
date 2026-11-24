@@ -1,6 +1,7 @@
 package com.example.projet_2;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,12 @@ public class MediaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
             }
         }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), LecteurActivity.class);
+            intent.putExtra("uri", media.getUri().toString());
+            intent.putExtra("nom", media.getNom());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
